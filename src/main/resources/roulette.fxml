@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RouletteController">
+   <children>
+      <Label fx:id="redID" layoutX="14.0" layoutY="50.0" text="Label" textFill="RED" />
+      <Label fx:id="blackID" layoutX="14.0" layoutY="77.0" text="Label" />
+      <Label fx:id="greenID" layoutX="14.0" layoutY="104.0" text="Label" textFill="#18d74e" />
+      <Label fx:id="totalID" layoutX="14.0" layoutY="25.0" text="Label" underline="true" />
+      <Label fx:id="greenPercentID" layoutX="59.0" layoutY="104.0" text="0.00%" />
+      <Label fx:id="blackPercentID" layoutX="59.0" layoutY="77.0" text="0.00%" />
+      <Label fx:id="redPercentID" layoutX="59.0" layoutY="50.0" text="0.00%" />
+      <ListView fx:id="lastNumbersID" layoutX="12.0" layoutY="147.0" nodeOrientation="RIGHT_TO_LEFT" orientation="HORIZONTAL" prefHeight="30.0" prefWidth="300.0" />
+   </children>
+</Pane>

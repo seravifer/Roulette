@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="587.0" prefWidth="1011.0" style="-fx-background-color: #018D2D;" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CasinoController">
+   <children>
+      <Button fx:id="betingID" layoutX="31.0" layoutY="477.0" mnemonicParsing="false" text="Apostar" />
+      <TextField fx:id="betID" layoutX="31.0" layoutY="437.0" promptText="Bet" />
+      <TextField fx:id="moneyID" layoutX="31.0" layoutY="401.0" promptText="Money" />
+      <Label fx:id="actualMoneyID" layoutX="31.0" layoutY="19.0" text="300€" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font></Label>
+      <StackPane fx:id="tabID" layoutX="343.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="315.0" prefWidth="620.0">
+         <children>
+            <ImageView fitHeight="315.0" fitWidth="620.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@tablero.png" />
+               </image>
+            </ImageView>
+         </children>
+      </StackPane>
+      <Circle fill="#cdc97f" layoutX="165.0" layoutY="185.0" radius="100.0" stroke="#ffffff00" strokeType="INSIDE" strokeWidth="0.0" />
+      <Label fx:id="numberID" alignment="CENTER" contentDisplay="CENTER" layoutX="116.0" layoutY="120.0" prefHeight="115.0" prefWidth="99.0" text="00" textAlignment="CENTER">
+         <font>
+            <Font size="90.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
