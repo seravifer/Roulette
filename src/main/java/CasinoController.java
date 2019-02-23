@@ -21,12 +21,6 @@ import java.util.ResourceBundle;
 public class CasinoController implements Initializable{
 
     @FXML
-    private Label numberID;
-
-    @FXML
-    private Label actualMoneyID;
-
-    @FXML
     private Button betingID;
 
     @FXML
@@ -36,7 +30,43 @@ public class CasinoController implements Initializable{
     private TextField moneyID;
 
     @FXML
+    private Label actualMoneyID;
+
+    @FXML
     private StackPane tabID;
+
+    @FXML
+    private Pane paneID;
+
+    @FXML
+    private Pane oneHalfID;
+
+    @FXML
+    private Pane evenID;
+
+    @FXML
+    private Pane redID;
+
+    @FXML
+    private Pane blackID;
+
+    @FXML
+    private Pane oddID;
+
+    @FXML
+    private Pane twoHalfID;
+
+    @FXML
+    private Pane firstColumID;
+
+    @FXML
+    private Pane secondColumID;
+
+    @FXML
+    private Pane thirdtColumID;
+
+    @FXML
+    private Label numberID;
 
     private GridPane grid;
 
@@ -120,7 +150,7 @@ public class CasinoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        grid = new GridPane();
+        /*grid = new GridPane();
         grid.setGridLinesVisible(true);
         grid.getColumnConstraints().add(new ColumnConstraints(42));
         for (int i = 1; i < 26; i++) {
@@ -144,7 +174,11 @@ public class CasinoController implements Initializable{
                 addPane(i, j);
 
 
-        tabID.getChildren().add(grid);
+        tabID.getChildren().add(grid);*/
+
+        redID.setOnMouseClicked(event -> {
+
+        });
 
 
         Player player = new Player(100);
