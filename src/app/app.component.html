@@ -1,0 +1,64 @@
+<div class="container">
+
+  <aside>
+    <div class="last-numbers">
+      <div *ngFor="let h of roulette.history.slice(-20).reverse()" [ngClass]="'bg-' + h.color">{{ h.number }}</div>
+    </div>
+    <div class="info">
+      <mat-card class="spin-number" [ngClass]="roulette.getSpin() ? 'bg-' + roulette.getSpin().color : ''">{{ roulette.getSpin() ? roulette.getSpin().number : '-' }}</mat-card>
+      <mat-card class="actions">
+          <button mat-raised-button (click)="wheel()">Play</button>
+          <button mat-raised-button (click)="reset()">Reset</button>
+          <div class="interval">
+            <button mat-icon-button (click)="toggleInterval()">
+              <mat-icon *ngIf="!intervalStatus">play_circle_outline</mat-icon>
+              <mat-icon *ngIf="intervalStatus">pause_circle_outline</mat-icon>
+            </button>
+            <mat-slider min="0" max="200" [value]="intervalValue" step="10" thumbLabel tickInterval="auto"></mat-slider>
+          </div>
+      </mat-card>
+      <mat-card class="stats">
+        <div class="block">
+          <div><span>Tirada</span><span>{{ roulette.turn }}</span><span></span></div>
+        </div>
+        <div class="block">
+          <div><span class="c-red">Rojo</span> <span>{{ roulette.colorStats.get("red") }}</span> <span>{{ (roulette.colorStats.get("red") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span class="c-black">Negro</span> <span>{{ roulette.colorStats.get("black") }}</span> <span>{{ (roulette.colorStats.get("black") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span class="c-green">Verde</span> <span>{{ roulette.colorStats.get("green") }}</span> <span>{{ (roulette.colorStats.get("green") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+        </div>
+        <div class="block">
+          <div><span>Par</span> <span>{{ roulette.typeStats.get("even") }}</span> <span>{{ (roulette.typeStats.get("even") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span>Impar</span> <span>{{ roulette.typeStats.get("odd") }}</span> <span>{{ (roulette.typeStats.get("odd") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+        </div>
+        <div class="block">
+          <div><span>1st 12</span> <span>{{ roulette.columStats.get("first") }}</span> <span>{{ (roulette.columStats.get("first") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span>2nd 12</span> <span>{{ roulette.columStats.get("second") }}</span> <span>{{ (roulette.columStats.get("second") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span>3rd 12</span> <span>{{ roulette.columStats.get("third") }}</span> <span>{{ (roulette.columStats.get("third") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+        </div>
+        <div class="block">
+          <div><span>1st Row</span> <span>{{ roulette.rowStats.get("first") }}</span> <span>{{ (roulette.rowStats.get("first") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span>2nd Row</span> <span>{{ roulette.rowStats.get("second") }}</span> <span>{{ (roulette.rowStats.get("second") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+          <div><span>3rd Row</span> <span>{{ roulette.rowStats.get("third") }}</span> <span>{{ (roulette.rowStats.get("third") / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+        </div>
+        <div class="block">
+          <div *ngFor="let n of roulette.numbersStats | keyvalue"><span>{{ n.key }}</span><span>{{ n.value }}</span><span>{{ (n.value / roulette.turn * 100 || 0) | number:'1.0-2' }}%</span></div>
+        </div>
+      </mat-card>
+    </div>
+  </aside>
+
+  <main>
+    <mat-card *ngFor="let player of players">
+      <mat-card-title>
+        {{ player.name }} <span *ngIf="player.money <= 0">GAME OVER</span>
+      </mat-card-title>
+      <mat-card-subtitle>
+        Money {{ player.money }} | Win: {{ player.win }} | Lose: {{ player.lose }}
+      </mat-card-subtitle>
+      <mat-card-content>
+        <chart-component [player]="player"></chart-component>
+      </mat-card-content>
+    </mat-card>
+  </main>
+
+</div>
