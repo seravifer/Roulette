@@ -4,6 +4,8 @@ import { Martingala, MartingalaInverse } from './models/strategies/martingala';
 import { Fibonacci } from './models/strategies/fibonacci';
 import { Alembert } from './models/strategies/alembert';
 import { Player } from './models/player';
+import { Paroli } from './models/strategies/paroli';
+import { Dopey } from './models/strategies/dopey';
 
 @Component({
   selector: 'app-root',
@@ -22,10 +24,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.initPlayers();
-  }
-
-  initPlayers() {
-    this.players = [new Martingala(), new MartingalaInverse(), new Fibonacci(), new Alembert()];
   }
 
   wheel() {
@@ -53,4 +51,13 @@ export class AppComponent implements OnInit {
     this.roulette.reset();
   }
 
+  private initPlayers() {
+    this.players = [
+      new Martingala(),
+      new Fibonacci(),
+      new Alembert(),
+      new Paroli(),
+      new Dopey(23)
+    ];
+  }
 }

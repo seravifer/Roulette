@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SpinNumber, Color, NumberType, Colum, Row } from '../models/spin-number';
+import { SpinNumber, Color, NumberType, Colum, Dozen } from '../models/spin-number';
 import { Player } from '../models/player';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class RouletteService {
   colorStats: Map<Color, number> = new Map();
   typeStats: Map<NumberType, number> = new Map();
   columStats: Map<Colum, number> = new Map();
-  rowStats: Map<Row, number> = new Map();
+  rowStats: Map<Dozen, number> = new Map();
 
   constructor() {
     this.initStats();
@@ -47,7 +47,7 @@ export class RouletteService {
     if (bet == this.getSpin().color) pay *= 2;
     else if (bet == this.getSpin().type)  pay *= 2;
     else if (bet == this.getSpin().colum)  pay *= 3;
-    else if (bet == this.getSpin().row)  pay *= 3;
+    else if (bet == this.getSpin().dozen)  pay *= 3;
     else if (bet == this.getSpin().number)  pay *= 36;
     else pay *= 0;
 
@@ -68,9 +68,9 @@ export class RouletteService {
     this.columStats.set(Colum.First, 0);
     this.columStats.set(Colum.Second, 0);
     this.columStats.set(Colum.Third, 0);
-    this.rowStats.set(Row.First, 0);
-    this.rowStats.set(Row.Second, 0);
-    this.rowStats.set(Row.Third, 0);
+    this.rowStats.set(Dozen.First, 0);
+    this.rowStats.set(Dozen.Second, 0);
+    this.rowStats.set(Dozen.Third, 0);
   }
 
   private saveStats() {
@@ -78,7 +78,7 @@ export class RouletteService {
     this.colorStats.set(this.getSpin().color, this.colorStats.get(this.getSpin().color) + 1);
     this.typeStats.set(this.getSpin().type, this.typeStats.get(this.getSpin().type) + 1);
     this.columStats.set(this.getSpin().colum, this.columStats.get(this.getSpin().colum) + 1);
-    this.rowStats.set(this.getSpin().row, this.rowStats.get(this.getSpin().row) + 1);
+    this.rowStats.set(this.getSpin().dozen, this.rowStats.get(this.getSpin().dozen) + 1);
   }
 
 }

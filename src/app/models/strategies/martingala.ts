@@ -1,8 +1,9 @@
 import { Player } from "../player";
-import { Color } from "../spin-number";
+import { Color, Spin } from "../spin-number";
 
 /**
   * Martingala
+  * 
   * Si ganas vuelves a la puesta inicial
   * Si pierdes dublicas lo apostado
   */
@@ -10,15 +11,17 @@ export class Martingala extends Player  {
 
   initPay: number;
   pay: number;
+  bet: Spin;
 
-  constructor(initPay: number = 1) {
+  constructor(bet: Spin = Color.Black, initPay: number = 1) {
     super(undefined, "Martingala");
+    this.bet = bet;
     this.initPay = initPay;
     this.pay = initPay;
   }
 
   play(money?: any, bet?: any) {
-    super.play(this.pay, Color.Black);
+    super.play(this.pay, this.bet);
   }
 
   charge(money: number) {
@@ -31,6 +34,7 @@ export class Martingala extends Player  {
 
 /**
   * Martingala Inversa
+  * 
   * Si ganas duplicas la apuesta
   * Si pierdo vuelvo a la apuesta inicial
   */
@@ -38,15 +42,17 @@ export class MartingalaInverse extends Player{
 
   initPay: number;
   pay: number;
+  bet: Spin;
 
-  constructor(initPay: number = 1) {
+  constructor(bet: Spin = Color.Black, initPay: number = 1) {
     super(undefined, "MartingalaInverse");
     this.initPay = initPay;
     this.pay = initPay;
+    this.bet = bet;
   }
 
   play(money?: any, bet?: any) {
-    super.play(this.pay, Color.Black);
+    super.play(this.pay, this.bet);
   }
 
   charge(money: number) {

@@ -3,6 +3,7 @@ import { Color } from "../spin-number"
 
 /**
   * Sistema D’Alembert
+  * 
   * Si gano bajo la apuesta 1
   * Si pierdo subo la apuesta 1
   */
@@ -25,5 +26,27 @@ export class Alembert extends Player {
     super.charge(money);
     if (money == 0) this.pay++;
     else this.pay = this.pay--;
+  }
+}
+
+export class AlembertInverse extends Player { 
+  
+  initPay: number;
+  pay: number;
+
+  constructor(initPay: number = 1) {
+    super(undefined, "D’Alembert Inverse");
+    this.initPay = initPay;
+    this.pay = initPay;
+  }
+
+  play(money?: any, bet?: any) {
+    super.play(this.pay, Color.Black);
+  }
+
+  charge(money: number) {
+    super.charge(money);
+    if (money == 0) this.pay--;
+    else this.pay = this.pay++;
   }
 }

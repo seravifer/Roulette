@@ -1,11 +1,3 @@
-.bg-black { background-color: #000000; }
-.bg-red { background-color: #ad252b; }
-.bg-green { background-color: #154f20; }
-
-.c-black { color: #000000; }
-.c-red { color: #ad252b; }
-.c-green { color: #154f20; }
-
 .container {
   display: flex;
 }
@@ -118,3 +110,11 @@ main {
     }
   }
 }
+
+.bg-black { background-color: #000000; }
+.bg-red { background-color: #ad252b; }
+.bg-green { background-color: #154f20; }
+
+.c-black { color: #000000; }
+.c-red { color: #ad252b; }
+.c-green { color: #154f20; }

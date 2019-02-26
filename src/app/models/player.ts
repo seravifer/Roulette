@@ -1,4 +1,4 @@
-import { Color, NumberType, Colum, Row } from "./spin-number";
+import { Spin } from "./spin-number";
 import { PlayerStats } from "./player-stats";
 
 export class Player extends PlayerStats {
@@ -8,7 +8,7 @@ export class Player extends PlayerStats {
   moneyHistory: number[] = [];
 
   betMoney: number;
-  bet: number | Color | NumberType | Colum | Row;
+  bet: Spin;
 
   constructor(money: number = 1000, name?: string) {
     super();
@@ -17,12 +17,12 @@ export class Player extends PlayerStats {
     this.moneyHistory.push(this.money);
   }
 
-  play(money?: number, bet?: number | Color | NumberType | Colum | Row) {
+  play(money?: number, bet?: Spin) {
     if (this.money <= 0 || this.money - this.betMoney < 0) {
       this.betMoney = null;
       return;
     }
-    console.log(`Player ${name}: ${money} to ${bet}`);
+    console.log(`Player ${this.name}: ${money} to ${bet}`);
     this.money -= money;
     this.bet = bet;
     this.betMoney = money;
